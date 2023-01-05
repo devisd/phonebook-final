@@ -1,26 +1,41 @@
-import Form from './components/Form';
-import Contacts from 'components/Contacts';
-import Filter from 'components/Filter';
+import { Suspense, lazy } from 'react';
+import { Routes, Route } from 'react-router-dom';
+
+const Layout = lazy(() =>
+  import('ui/Layout/Layout' /* webpackChunkName: "layout" */)
+);
+
+const HomeView = lazy(() =>
+  import('pages/HomeView' /* webpackChunkName: "home-page" */)
+);
+
+const ContactsView = lazy(() =>
+  import('pages/ContactsView' /* webpackChunkName: "contacts-page" */)
+);
+
+const RegisterView = lazy(() =>
+  import('pages/RegisterView' /* webpackChunkName: "register-page" */)
+);
+
+const LoginView = lazy(() =>
+  import('pages/LoginView' /* webpackChunkName: "login-page" */)
+);
 
 export const App = () => {
   return (
-    <div
-      style={{
-        height: 'auto',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 20,
-        color: '#010101',
-        padding: 50,
-      }}
-    >
-      <h1>Phonebook</h1>
-      <Form />
-      <Filter />
-      <h2>Contacts</h2>
-      <Contacts />
+    <div>
+      <>
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<HomeView />} />
+              <Route path="/contacts" element={<ContactsView />} />
+              <Route path="/register" element={<RegisterView />} />
+              <Route path="/login" element={<LoginView />} />
+            </Route>
+          </Routes>
+        </Suspense>
+      </>
     </div>
   );
 };
