@@ -52,11 +52,11 @@ const RegisterView = () => {
 
       <form onSubmit={handleSubmit}>
         <label>
-          Name
+          Name:
           <input type="text" name="name" value={name} onChange={handleChange} />
         </label>
         <label>
-          e-mail
+          E-mail:
           <input
             type="email"
             name="email"
@@ -65,7 +65,7 @@ const RegisterView = () => {
           />
         </label>
         <label>
-          Password
+          Password:
           <input
             type="password"
             name="password"
@@ -73,7 +73,7 @@ const RegisterView = () => {
             onChange={handleChange}
           />
         </label>
-        <button type="submit">SignUp</button>
+        <button type="submit">Register</button>
       </form>
     </>
   );

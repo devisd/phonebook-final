@@ -1,8 +1,8 @@
 import { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-const Layout = lazy(() =>
-  import('ui/Layout/Layout' /* webpackChunkName: "layout" */)
+const AppBar = lazy(() =>
+  import('components/Nav/AppBar/AppBar' /* webpackChunkName: "app-bar" */)
 );
 
 const HomeView = lazy(() =>
@@ -27,7 +27,7 @@ export const App = () => {
       <>
         <Suspense fallback={<h1>Loading...</h1>}>
           <Routes>
-            <Route path="/" element={<Layout />}>
+            <Route path="/" element={<AppBar />}>
               <Route index element={<HomeView />} />
               <Route path="/contacts" element={<ContactsView />} />
               <Route path="/register" element={<RegisterView />} />
