@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+import authSlice from './auth/auth-slice';
 import contactsSlice from './contacts/contacts-slice';
 import filterSlice from './filter/filterSlice';
 import {
@@ -12,7 +13,6 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import authSlice from './auth/auth-slice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -35,4 +35,4 @@ export const store = configureStore({
 });
 
 export const { filter } = filterSlice.actions;
-export const persist = persistStore(store);
+export const persistor = persistStore(store);

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { login } from 'redux/auth/auth-operations';
+import authOperations from 'redux/auth/auth-operations';
 
 const LoginView = () => {
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ const LoginView = () => {
       password,
     });
 
-    dispatch(login({ email, password }));
+    dispatch(authOperations.login({ email, password }));
 
     reset();
   };

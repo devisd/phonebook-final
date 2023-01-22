@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { register } from 'redux/auth/auth-operations';
+import authOperations from 'redux/auth/auth-operations';
 
 const RegisterView = () => {
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ const RegisterView = () => {
       password,
     });
 
-    dispatch(register({ name, email, password }));
+    dispatch(authOperations.register({ name, email, password }));
 
     reset();
   };
